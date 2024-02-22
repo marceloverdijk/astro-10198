@@ -39,6 +39,7 @@
 var e = {
     
     init: function () {
+        e.dropdownHover(),
         e.aosFunc()
     },
 
@@ -53,6 +54,30 @@ var e = {
     selectAll: function (selectors) {
         return document.querySelectorAll(selectors);
     },
+
+    // START: Menu Dropdown Hover
+    dropdownHover: function () {
+        // console.log(bootstrap)
+        if (window.matchMedia('(min-width: 992px)').matches) {
+          (function($bs) {
+            document.querySelectorAll('.dropdown-hover .dropdown').forEach(function(dd) {
+                dd.addEventListener('mouseenter', function(e) {
+                    let toggle = e.target.querySelector(':scope>[data-bs-toggle="dropdown"]');
+                    if (!toggle.classList.contains('show')) {
+                        $bs.Dropdown.getOrCreateInstance(toggle).toggle();
+                    }
+                });
+                dd.addEventListener('mouseleave', function(e) {
+                    let toggle = e.target.querySelector(':scope>[data-bs-toggle="dropdown"]');
+                    if (toggle.classList.contains('show')) {
+                        $bs.Dropdown.getOrCreateInstance(toggle).toggle();
+                    }
+                });
+            });
+          })(bootstrap);
+        }
+      },
+      // END: Menu Dropdown Hover
 
     // START: AOS Animation
     /* @required https://github.com/michalsnik/aos/tree/v2 */

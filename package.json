@@ -14,9 +14,11 @@
   "dependencies": {
     "@astrojs/check": "^0.5.5",
     "aos": "^2.3.4",
-    "astro": "^4.4.3"
+    "astro": "^4.4.3",
+    "bootstrap": "^5.3.3"
   },
   "devDependencies": {
+    "@types/aos": "^3.0.7",
     "@types/node": "^20.11.19",
     "autoprefixer": "^10.4.17",
     "del-cli": "^5.1.0",
@@ -28,6 +30,14 @@
     {
       "from": "node_modules/aos/dist/aos.js",
       "to": "public/vendor/aos/aos.js"
+    },
+    {
+      "from": "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+      "to": "public/vendor/bootstrap/bootstrap.bundle.min.js"
+    },
+    {
+      "from": "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js.map",
+      "to": "public/vendor/bootstrap/bootstrap.bundle.min.js.map"
     }
   ]
 }
