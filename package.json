@@ -7,11 +7,27 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "preinstall": "del public/vendor",
+    "postinstall": "vendor-copy"
   },
   "dependencies": {
-    "astro": "^4.4.3",
     "@astrojs/check": "^0.5.5",
-    "typescript": "^5.3.3"
-  }
+    "aos": "^2.3.4",
+    "astro": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.19",
+    "autoprefixer": "^10.4.17",
+    "del-cli": "^5.1.0",
+    "sass": "^1.71.1",
+    "typescript": "^5.3.3",
+    "vendor-copy": "^3.0.1"
+  },
+  "vendorCopy": [
+    {
+      "from": "node_modules/aos/dist/aos.js",
+      "to": "public/vendor/aos/aos.js"
+    }
+  ]
 }

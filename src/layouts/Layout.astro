@@ -1,4 +1,7 @@
 ---
+import 'aos/src/sass/aos.scss'
+import '@/scss/style.scss'
+
 interface Props {
 	title: string;
 }
@@ -18,34 +21,18 @@ const { title } = Astro.props;
 	</head>
 	<body>
 		<slot />
+
+		<!-- This would make 'aos' available globally -->
+		<!-- But unfortunately we cannot resolve/include such a script from node_modules -->
+		<!-- <script is:inline src="/vendor/aos/aos.js"></script> -->
+
+		<!-- This is the suggested approach, but it will not make 'aos' available globally, so does not work -->
+		<script>
+			import "aos/dist/aos.js";
+		</script>
+
+		<!-- This is an example script (provided via 3th party template, which assumes/needs 'aos' to available globally)  -->
+		<script is:inline src="/js/external-theme.js"></script>
+
 	</body>
 </html>
-<style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-		background-size: 224px;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
-</style>
